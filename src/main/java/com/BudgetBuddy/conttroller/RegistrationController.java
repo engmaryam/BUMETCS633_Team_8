@@ -32,7 +32,8 @@ public class RegistrationController {
     }
     
     @PostMapping("/budgetbuddy/login")
-    public String loginUser(User user, Model model) {
+    public String loginUser(@ModelAttribute("user")User user, Model model) {
+    	
         if (userService.authenticateUser(user.getUsername(), user.getPasswordHash())) {
             return "redirect:/budgetbuddy";  // Redirect to home page after successful login
         } else {

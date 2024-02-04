@@ -27,6 +27,7 @@ public class UserService {
 
         public boolean authenticateUser(String username, String password) {
             User user = userRepository.findByUsernameAndPasswordHash(username, password);
+            System.out.println(" the cresdintail is :"+user.getPasswordHash());
             return user != null;
         }
     
