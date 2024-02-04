@@ -1,11 +1,11 @@
 -- Create Database if not exists
-CREATE DATABASE IF NOT EXISTS budget_buddy;
+CREATE DATABASE IF NOT EXISTS budget_buddy_app;
 
 -- Use the created database
-USE budget_buddy;
+USE budget_buddy_app;
 
 -- Table for User
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
