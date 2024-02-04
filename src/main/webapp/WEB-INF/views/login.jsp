@@ -47,6 +47,8 @@
 		h1 {
 		    text-align: center;
 		    margin-top: 50px;
+		    color: black;
+			
 		}
 
 		section {
@@ -108,7 +110,7 @@
 
 		/* Additional styles for the background image */
 		body {
-		    background-image: url('/images/Budget-Calculator.jpg');
+		    background-image: url('/images/Budget-Calculator management.webp');
 		    background-size: cover;
 		    background-position: center;
 		    background-attachment: fixed;
@@ -150,36 +152,5 @@
     &copy; 2024 BudgetBuddy
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function setJwtInCookie(jwtResponse) {
-        console.log("Token: " + jwtResponse['token'] + " Expiry: " + jwtResponse['expiry']);
-        document.cookie = "jwtToken=" + jwtResponse['token'] + "; expires=" + jwtResponse['expiry'];
-    }
-    $(document).ready(function() {
-        $('#loginForm').submit(function(event) {
-            event.preventDefault();
-            const formData = {
-                username: $('input[name="username"]').val().toLowerCase(),
-                password: $('input[name="password"]').val(),
-            };
 
-            $.ajax({
-                type: 'POST',
-                url: '/api/login',
-                contentType: 'application/json',
-                data: JSON.stringify(formData),
-                success: function(response) {
-                    console.log(response)
-                    setJwtInCookie(response);
-                    alert("Authentication passed successfully, redirect to your dashboard.");
-                    window.location.replace("/BudgetBuddy/dashboard");
-                },
-                error: function(error) {
-                    alert("Authentication failed, please try again");
-                    console.error('Login failed:', error);
-                }
-            });
-        });
-    });
-</script>
 </html>

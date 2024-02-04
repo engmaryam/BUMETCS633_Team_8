@@ -36,4 +36,9 @@ public class HomeController {
         logger.info("Login to BudgetBuddy Application");
         return "login";
     }
+    
+    @GetMapping("budgetbuddy/success")
+    public String showSuccessPage() {
+        return "success"; // 
+    }
 }
