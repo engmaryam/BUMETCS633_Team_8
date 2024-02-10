@@ -16,7 +16,7 @@
 	
 		}
 		body {
-		    background-image: url('/images/Budget-Calculator.jpg');
+		    background-image: url('/images/Budget-Calculator management.webp');
 		    background-size: cover;
 		    background-position: center;
 		    background-attachment: fixed;
@@ -152,7 +152,7 @@
     <div class="hero">
         <h1>Welcome to BudgetBuddy</h1>
         <p>Your Smart Money Management Solution</p>
-        <a href="#" class="btn-primary" id="get-started-button">Get Started</a>
+        <a href="/budgetbuddy/login" class="btn-primary" id="get-started-button">Get Started</a>
     </div>
 
     <section class="features">

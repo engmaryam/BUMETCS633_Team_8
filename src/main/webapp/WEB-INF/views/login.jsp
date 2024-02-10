@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BudgetBuddy - Login</title>
+</head>
     <style>
 		body {
 		    font-family: Arial, sans-serif;
@@ -47,6 +48,8 @@
 		h1 {
 		    text-align: center;
 		    margin-top: 50px;
+		    color: black;
+			
 		}
 
 		section {
@@ -108,24 +111,14 @@
 
 		/* Additional styles for the background image */
 		body {
-		    background-image: url('/images/Budget-Calculator.jpg');
+		    background-image: url('/images/Budget-Calculator management.webp');
 		    background-size: cover;
 		    background-position: center;
 		    background-attachment: fixed;
 		}
       
     </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/budgetbuddy" style="color: white;">Home</a></li>
-                <li><a href="/budgetbuddy/login" style="color: white;">Login</a></li>
-                <li><a href="/budgetbuddy/register" style="color: white;">Register</a></li>
-            </ul>
-        </nav>
-    </header>
+	<body>
 
     <h1>Login to BudgetBuddy</h1>
 
@@ -135,9 +128,9 @@
             <input type="text" id="username" name="username" required>
             
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="passwordHash" required>
             
-            <button type="submit">Login</button>
+            <button type="button" onclick="submitForm()">Login</button>
         </form>
     </section>
 
@@ -145,41 +138,38 @@
         <p>Don't have an account? <a href="/budgetbuddy/register">Register here</a></p>
         
     </section>
+
+    <footer>
+        &copy; 2024 BudgetBuddy
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+		    function submitForm() {
+		        const formData = {
+		            username: $('#username').val().toLowerCase(),
+		            passwordHash: $('#password').val(),
+		        };
+
+		        $.ajax({
+		            type: 'POST',
+		            url: '/budgetbuddy/login',
+		            data: formData,  // Remove JSON.stringify
+		            success: function(response) {
+		                window.location.replace("/budgetbuddy");
+		            },
+		            error: function(error) {
+		                alert("Invalid username or password");
+		                console.error('Login failed:', error);
+		            }
+		        });
+		    }
+			
+    </script>
 </body>
 <footer>
     &copy; 2024 BudgetBuddy
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function setJwtInCookie(jwtResponse) {
-        console.log("Token: " + jwtResponse['token'] + " Expiry: " + jwtResponse['expiry']);
-        document.cookie = "jwtToken=" + jwtResponse['token'] + "; expires=" + jwtResponse['expiry'];
-    }
-    $(document).ready(function() {
-        $('#loginForm').submit(function(event) {
-            event.preventDefault();
-            const formData = {
-                username: $('input[name="username"]').val().toLowerCase(),
-                password: $('input[name="password"]').val(),
-            };
 
-            $.ajax({
-                type: 'POST',
-                url: '/api/login',
-                contentType: 'application/json',
-                data: JSON.stringify(formData),
-                success: function(response) {
-                    console.log(response)
-                    setJwtInCookie(response);
-                    alert("Authentication passed successfully, redirect to your dashboard.");
-                    window.location.replace("/BudgetBuddy/dashboard");
-                },
-                error: function(error) {
-                    alert("Authentication failed, please try again");
-                    console.error('Login failed:', error);
-                }
-            });
-        });
-    });
-</script>
 </html>
