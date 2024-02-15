@@ -12,6 +12,7 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Override
     public void addIncome(double amount) {
+
         if (amount < 0) {
             throw new IllegalArgumentException("Income amount must be non-negative.");
         }

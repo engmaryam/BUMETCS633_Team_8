@@ -152,7 +152,7 @@
     <div class="hero">
         <h1>Welcome to BudgetBuddy</h1>
         <p>Your Smart Money Management Solution</p>
-        <a href="/budgetbuddy/login" class="btn-primary" id="get-started-button">Get Started</a>
+        <a href="/budgetbuddy/dashboard" class="btn-primary" id="get-started-button">Get Started</a>
     </div>
 
     <section class="features">

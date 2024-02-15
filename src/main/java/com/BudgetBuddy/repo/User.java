@@ -19,13 +19,13 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long userId;
+    private int userId;
     
     
     @Column(name = "email")
@@ -41,13 +41,11 @@ public class User {
 		
 	}
 
-	public Long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+
 
 	public String getEmail() {
 		return email;
