@@ -13,6 +13,8 @@ import com.BudgetBuddy.repo.User;
 import com.BudgetBuddy.repo.UserRegistrationDto;
 import com.BudgetBuddy.servicImp.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class RegistrationController {
 
@@ -32,14 +34,19 @@ public class RegistrationController {
     }
     
     @PostMapping("/budgetbuddy/login")
-    public String loginUser(@ModelAttribute("user")User user, Model model) {
+    public String loginUser(@ModelAttribute("user")User user, Model model,HttpSession session) {
     	
         if (userService.authenticateUser(user.getUsername(), user.getPasswordHash())) {
+            int userId = userService.getUserIdByUsername(user.getUsername());
+            session.setAttribute("userId", userId);
+
             return "redirect:/budgetbuddy";  // Redirect to home page after successful login
         } else {
             model.addAttribute("loginError", "Invalid username or password");
             return "login";  // Redirect back to login page with error message
         }
+        
     }
+    
 }
 

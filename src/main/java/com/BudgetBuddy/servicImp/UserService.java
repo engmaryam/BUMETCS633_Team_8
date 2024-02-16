@@ -30,6 +30,18 @@ public class UserService {
             System.out.println(" the cresdintail is :"+user.getPasswordHash());
             return user != null;
         }
-    
-    }
 
+
+		
+		    public int getUserIdByUsername(String username) {
+		        User user = userRepository.findByUsername(username);
+		        if (user != null) {
+		            return user.getUserId();
+		        }
+		        return 0; // Or throw an exception if the user is not found
+		    }
+		
+
+		}
+    
+    

@@ -41,4 +41,20 @@ public class HomeController {
     public String showSuccessPage() {
         return "success"; // 
     }
+    
+    @GetMapping("/budgetbuddy/dashboard")
+    public String dashboard() {
+        logger.info("Welcome to user Dashboard");       
+        return "dashboard";
+        
+        
+    }
+    
+    @GetMapping("/budgetbuddy/addincome")
+    public String addIncome() {
+        logger.info("Welcome to user add Income form");       
+        return "addincome";
+        
+        
+    }
 }
