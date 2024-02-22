@@ -64,9 +64,14 @@ public class HomeController {
     
     @GetMapping("/budgetbuddy/dashboard")
     public String dashboard(HttpSession session,Model model) {
+    	
         logger.info("Welcome to user Dashboard"); 
         System.out.println(" the Dashborad Values : ");
         Integer userId = (Integer) session.getAttribute("userId");
+       if (userId ==null) {
+    	   
+     	   return "login";
+       }
         System.out.println(" the Dashborad user id  : "+userId);
 
         DashboardData dashboardData = new DashboardData();
@@ -109,9 +114,12 @@ public class HomeController {
        model.addAttribute("totalIncome", totalIncome);
        model.addAttribute("totalExpenses", totalExpenses);
        model.addAttribute("balance", balance);
-        return "dashboard"; // Return the name of the JSP view
+       
+        return "dashboard"; 
     
-        
+       
+
+       
         
     }
     

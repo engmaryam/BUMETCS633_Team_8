@@ -55,6 +55,9 @@
         h1 {
             text-align: center;
             margin-bottom: 20px;
+	        color: black;
+			
+			
         }
         .content {
             display: flex;
@@ -115,7 +118,7 @@
 	    .totals-box h2 {
 	        color: black;
 	    }
-		
+	
 		
     </style>
 </head>
